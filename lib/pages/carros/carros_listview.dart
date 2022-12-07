@@ -4,6 +4,7 @@ import 'package:carros/pages/carros/carro_page.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CarrosListView extends StatelessWidget {
   List<Carro> carros;
 
@@ -27,8 +28,7 @@ class CarrosListView extends StatelessWidget {
                 children: <Widget>[
                   Center(
                     child: CachedNetworkImage(
-                      imageUrl:
-                      c.urlFoto ??
+                      imageUrl: c.urlFoto ??
                           "http://www.livroandroid.com.br/livro/carros/esportivos/Ferrari_FF.png",
                       width: 250,
                     ),
@@ -43,15 +43,15 @@ class CarrosListView extends StatelessWidget {
                     "descrição...",
                     style: TextStyle(fontSize: 16),
                   ),
-                  ButtonTheme.bar(
+                  ButtonTheme(
                     // make buttons use the appropriate styles for cards
                     child: ButtonBar(
                       children: <Widget>[
-                        FlatButton(
+                        ElevatedButton(
                           child: const Text('DETALHES'),
-                          onPressed: () => _onClickCarro(context,c),
+                          onPressed: () => _onClickCarro(context, c),
                         ),
-                        FlatButton(
+                        ElevatedButton(
                           child: const Text('SHARE'),
                           onPressed: () {
                             /* ... */
@@ -69,7 +69,7 @@ class CarrosListView extends StatelessWidget {
     );
   }
 
-  _onClickCarro(context,Carro c) {
+  _onClickCarro(context, Carro c) {
     push(context, CarroPage(c));
   }
 }

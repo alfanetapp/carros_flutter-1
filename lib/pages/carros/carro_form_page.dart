@@ -9,7 +9,6 @@ import 'package:carros/utils/event_bus.dart';
 import 'package:carros/utils/nav.dart';
 import 'package:carros/widgets/app_button.dart';
 import 'package:carros/widgets/app_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -237,7 +236,7 @@ class _CarroFormPageState extends State<CarroFormPage> {
 
     if (response.ok) {
       alert(context, "Carro salvo com sucesso", callback: () {
-        EventBus.get(context).sendEvent(CarroEvent("carro_salvo",c.tipo));
+        EventBus.get(context).sendEvent(CarroEvent("carro_salvo", c.tipo));
 
         pop(context);
       });

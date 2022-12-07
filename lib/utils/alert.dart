@@ -11,11 +11,11 @@ alert(BuildContext context, String msg, {Function callback}) {
           title: Text("Carros"),
           content: Text(msg),
           actions: <Widget>[
-            FlatButton(
+            ElevatedButton(
               child: Text("OK"),
               onPressed: () {
                 Navigator.pop(context);
-                if(callback != null) {
+                if (callback != null) {
                   callback();
                 }
               },

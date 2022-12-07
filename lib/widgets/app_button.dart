@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AppButton extends StatelessWidget {
   String text;
   Function onPressed;
@@ -11,8 +12,10 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 46,
-      child: RaisedButton(
-        color: Colors.blue,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.blueAccent, // Background color
+        ),
         child: showProgress
             ? Center(
                 child: CircularProgressIndicator(

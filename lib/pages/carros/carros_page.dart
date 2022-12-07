@@ -7,6 +7,7 @@ import 'package:carros/utils/event_bus.dart';
 import 'package:carros/widgets/text_error.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CarrosPage extends StatefulWidget {
   String tipo;
 
@@ -37,10 +38,10 @@ class _CarrosPageState extends State<CarrosPage>
 
     // Escutando uma stream
     final bus = EventBus.get(context);
-    subscription = bus.stream.listen((Event e){
+    subscription = bus.stream.listen((Event e) {
       print("Event $e");
       CarroEvent carroEvent = e;
-      if(carroEvent.tipo == tipo) {
+      if (carroEvent.tipo == tipo) {
         _bloc.fetch(tipo);
       }
     });

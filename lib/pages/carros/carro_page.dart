@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carros/pages/api_response.dart';
 import 'package:carros/pages/carros/carro.dart';
@@ -14,6 +13,7 @@ import 'package:carros/widgets/text.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// ignore: must_be_immutable
 class CarroPage extends StatefulWidget {
   Carro carro;
 
@@ -89,7 +89,7 @@ class _CarroPageState extends State<CarroPage> {
       child: ListView(
         children: <Widget>[
           CachedNetworkImage(
-              imageUrl:widget.carro.urlFoto ??
+              imageUrl: widget.carro.urlFoto ??
                   "http://www.livroandroid.com.br/livro/carros/esportivos/Ferrari_FF.png"),
           _bloco1(),
           Divider(),
@@ -161,8 +161,7 @@ class _CarroPageState extends State<CarroPage> {
   }
 
   void _onClickMapa() {
-    if(carro.latitude != null && carro.longitude != null) {
-
+    if (carro.latitude != null && carro.longitude != null) {
       push(context, MapPage(carro));
     } else {
       alert(context, "Este carro não possui Lat/Lng da fábrica.");
@@ -170,7 +169,7 @@ class _CarroPageState extends State<CarroPage> {
   }
 
   void _onClickVideo() {
-    if(carro.urlVideo != null && carro.urlVideo.isNotEmpty) {
+    if (carro.urlVideo != null && carro.urlVideo.isNotEmpty) {
       launch(carro.urlVideo);
 
 //      push(context, VideoPage(carro));
@@ -206,9 +205,10 @@ class _CarroPageState extends State<CarroPage> {
   void deletar() async {
     ApiResponse<bool> response = await CarrosApi.delete(carro);
 
-    if(response.ok) {
-      alert(context, "Carro deletado com sucesso", callback: (){
-        EventBus.get(context).sendEvent(CarroEvent("carro_deletado",carro.tipo));
+    if (response.ok) {
+      alert(context, "Carro deletado com sucesso", callback: () {
+        EventBus.get(context)
+            .sendEvent(CarroEvent("carro_deletado", carro.tipo));
 
         pop(context);
       });
